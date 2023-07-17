@@ -1,0 +1,10 @@
+
+  - name: Get Nexus facts
+    nxos_facts:
+
+  - name: "Create VLAN and SVI"
+    nxos_config:
+      src: "NX_VLAN.j2"
+      match: none
+      save_when: modified
+
