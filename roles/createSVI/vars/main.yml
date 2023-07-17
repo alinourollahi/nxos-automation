@@ -1,0 +1,7 @@
+---
+vlan:
+    id: ""
+    name: ""
+    subnet: ""
+
+ospf_area: ""
