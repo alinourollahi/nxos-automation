@@ -1,0 +1,11 @@
+---
+
+- name: "Create VLAN, SVI and ACL"
+  hosts: nxos
+  gather_facts: false
+  connection: network_cli
+
+  roles:
+    - role: createSVI 
+
+
