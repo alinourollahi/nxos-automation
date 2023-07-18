@@ -1,24 +1,28 @@
 # nxos-automation
-This repository contains ansible scripts for automating repetitive tasks on Cisco Nexus switches.
 
+This repository contains Ansible scripts for automating repetitive tasks on Cisco Nexus switches.
 
 ---
 
-## role: CreateSVI
-This ansible role is used for creating SVIs and also configuring HSRP on Nexus switches.
-Each time that you run this script, it's going to create an SVI on each of them and also configure HSRP on both of them.
+## Role: CreateSVI
+
+The CreateSVI Ansible role is used for creating SVIs and configuring HSRP on Nexus switches. When running this script, it creates an SVI on each switch and configures HSRP on both switches.
 
 ### Inventory
-In the inventory directory, there's a file name 'switches' that contains the IP addresses of your switches.
-On 'inventory/group_vars', you should provide the SSH information, and on the 'inventory/host_vars' you should specify which switch should be configured as HSRP_1 and which one should be HSRP_2.
 
-### vars
-You have to provide the values for these parameters:
-   - vlan.id
-   - vlan.name
-   - vlan.subnet
-   - ospf_area
+In the `inventory` directory, you'll find the following files:
+- `switches`: Contains the IP addresses of your switches.
+- `inventory/group_vars`: Specify SSH information.
+- `inventory/host_vars`: Specify which switch should be configured as HSRP_1 and which one should be HSRP_2.
 
-You can also provide the above parameters like this:
-ansible-playbook playbooks/add-svi.yml  -e 'vlan.id=VID-100' -e 'vlan.id=100' -e 'vlan.subnet=10.11.12.0/28' -e 'ospf_area=100.100.100.100' -e 'ansible_pasword=1234'
+### Variables
 
+You need to provide values for the following parameters:
+- `vlan.id`
+- `vlan.name`
+- `vlan.subnet`
+- `ospf_area`
+
+Alternatively, you can provide the parameters when running the playbook, like this:
+```shell
+ansible-playbook playbooks/add-svi.yml -e 'vlan.id=VID-100' -e 'vlan.id=100' -e 'vlan.subnet=10.11.12.0/28' -e 'ospf_area=100.100.100.100' -e 'ansible_password=1234'
