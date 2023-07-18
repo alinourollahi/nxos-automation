@@ -17,7 +17,7 @@ In the `inventory` directory, you'll find the following files:
 
 ### Variables
 
-You need to provide values for the following parameters:
+You need to provide values for the following parameters in 'vars/main.yml' file:
 - `vlan.id`
 - `vlan.name`
 - `vlan.subnet`
