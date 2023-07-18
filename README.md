@@ -27,7 +27,7 @@ Alternatively, you can provide the parameters when running the playbook, like th
 ```shell
 ansible-playbook playbooks/add-svi.yml -e 'vlan.id=VID-100' -e 'vlan.id=100' -e 'vlan.subnet=10.11.12.0/28' -e 'ospf_area=100.100.100.100' -e 'ansible_password=1234'
 
-
+```
 ---
 
 If you have any questions about this repo, feel free to reach me at alinourollahi777@gmail.com.
