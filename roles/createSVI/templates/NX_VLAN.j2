@@ -1,0 +1,24 @@
+vlan {{ vlan.id }}
+  name {{ vlan.name }}
+
+interface Vlan{{ vlan.id }}
+  description ** {{ vlan.name}} **
+  no shutdown
+  no ip redirects
+
+  {% if hsrp_number == 1 %}
+  ip address {{  vlan.subnet | ipaddr('-4') }}
+  {% endif %}
+  {% if hsrp_number == 2 %}
+  ip address {{  vlan.subnet | ipaddr('-3') }}
+  {% endif %}
+  no ipv6 redirects
+  ip ospf passive-interface
+  ip router ospf 1 area {{ ospf_area }}
+  hsrp version 2
+  hsrp {{ vlan.id }} 
+    preempt 
+    priority 255
+    ip  {{ vlan.subnet | ipaddr('-2') | ipv4('address') }}
+    track 10 decrement 255 
+
